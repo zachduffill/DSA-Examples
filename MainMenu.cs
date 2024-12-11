@@ -5,7 +5,18 @@ namespace DSA_Examples
     internal class MainMenu
     {
         private MenuItem[] MenuItems { get; init; }
-        private int MenuOffset { get; set; } 
+        private int _menuOffset;
+        private int MenuOffset 
+        {
+            get => _menuOffset;
+            set
+            {
+                if (value >= 0 && value < MenuItems.Length - 10)
+                {
+                    _menuOffset = value;
+                }
+            }
+        } 
 
         public class MenuItem
         {
@@ -28,6 +39,7 @@ namespace DSA_Examples
         {
             MenuItems = LoadExamples();
             MenuOffset = 0;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
         }
 
         static private MenuItem[] LoadExamples()
@@ -51,32 +63,34 @@ namespace DSA_Examples
             Console.Clear();
             Console.WriteLine("DSA-Examples");
             Console.WriteLine("------------");
-            Console.WriteLine();
-            for (int i = 0; i < MenuItems.Count(); i++)
+            Console.WriteLine(MenuOffset > 0 ? "      ↑" : "");
+            for (int i = MenuOffset; i < Math.Min(MenuItems.Length,10) + MenuOffset; i++)
             {
-                Console.WriteLine($"[{i}] {MenuItems[i]}");
+                Console.WriteLine($"[{i-MenuOffset}] {MenuItems[i]}");
             }
-            Console.WriteLine();
+            Console.WriteLine(MenuOffset+11 != MenuItems.Length ? "      ↓\n" : "\n");
             Console.WriteLine("[x] Exit");
         }
 
-        public MenuItem? HandleInput()
+        public (bool,MenuItem?) HandleInput()
         {
             ConsoleKeyInfo input = new ConsoleKeyInfo();
             while (!Char.IsDigit(input.KeyChar))
             {
                 input = Console.ReadKey(true);
-                Console.WriteLine(input);
-                if (input.Key == ConsoleKey.UpArrow) Navigate(1);
-                else if (input.Key == ConsoleKey.DownArrow) Navigate(-1);
-                else if (input.Key == ConsoleKey.X) return null;
+                switch (input.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        MenuOffset -= 1;
+                        return (false, null);
+                    case ConsoleKey.DownArrow:
+                        MenuOffset += 1;
+                        return (false, null);
+                    case ConsoleKey.X:
+                        return (true, null);
+                }
             }
-            return MenuItems[int.Parse(input.KeyChar.ToString())+MenuOffset];
-        }
-
-        private void Navigate(int direction)
-        {
-
+            return (false,MenuItems[int.Parse(input.KeyChar.ToString())+MenuOffset]);
         }
     }
 }
