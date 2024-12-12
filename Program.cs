@@ -19,7 +19,7 @@ while (true)
         Console.Clear();
         for (int i = 0; i < tests.Length; i++)
         {
-            Console.WriteLine($"-- Test {i}  --");
+            Console.WriteLine($"-- Test {i+1}  --");
             
             if (tests[i].Run()) Console.WriteLine("-- Success --");
             else Console.WriteLine("-- Failure --");
