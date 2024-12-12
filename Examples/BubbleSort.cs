@@ -4,7 +4,7 @@
     {
         static private int[] Sort(int[] arr)
         {
-            for (int j = 1; j < arr.Length - 1; j++)
+            for (int j = 1; j < arr.Length; j++)
             {
                 for (int i = 0; i < arr.Length - j; i++)
                 {

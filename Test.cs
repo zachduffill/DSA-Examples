@@ -1,24 +1,47 @@
-﻿namespace DSA_Examples
+﻿using System.Collections;
+
+namespace DSA_Examples
 {
     internal class Test<T>
     {
         Func<T> Method { get; init; }
-        T Expected { get; init; }
-        public Test(Func<T> method, T expected)
+        object Expected { get; init; }
+        public Test(Func<T> method, object expected)
         {
             Method = method;
             Expected = expected;
         }
         public bool Run()
         {
-            T result = Method();
+            object? result = Method();
             if (result == null) return false;
 
-            Console.WriteLine($"Expected   {Expected}");
-            Console.WriteLine($"Actual     {result}");
+            (string expStr, string resStr, bool equal) = HandleAndCompare(Expected, result);
+            Console.WriteLine($"Expected   {expStr}");
+            Console.WriteLine($"Actual     {resStr}");
 
-            if (result.Equals(Expected)) return true;
-            return false;
+            if (equal) return true;
+            else return false;
+        }
+        private static (string,string,bool) HandleAndCompare(object exp, object res) // Handles object types (due to differences in value comparison and string conversion)
+        {
+            string expStr, resStr;
+            bool equal = false;
+
+            if (exp is Array expArr && res is Array resArr)
+            {
+                expStr = $"[{string.Join(", ", expArr.Cast<object>().Select(x => x?.ToString() ?? "null"))}]";
+                resStr = $"[{string.Join(", ", resArr.Cast<object>().Select(x => x?.ToString() ?? "null"))}]";
+                if (StructuralComparisons.StructuralEqualityComparer.Equals(exp, res)) equal = true;
+            }
+            else
+            {
+                expStr = exp.ToString() ?? "";
+                resStr = res.ToString() ?? "";
+                if (res.Equals(exp)) equal = true;
+            }
+
+            return (expStr, resStr, equal);
         }
     }
 }
