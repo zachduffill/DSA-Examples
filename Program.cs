@@ -5,28 +5,24 @@ MainMenu menu = new MainMenu();
 while (true)
 {
     menu.Display();
-    (bool shouldExit, MenuItem? selectedItem) = menu.HandleInput(); // if user presses exit key, null item is returned,
+    (bool shouldExit, MenuItem? selectedItem) = menu.HandleInput(); 
     
     if (shouldExit) return 0;
     
     if (selectedItem != null)
     {
-        Example? example = (Example?)Activator.CreateInstance(selectedItem.Type);
-        if (example == null) throw new ApplicationException($"Could not create instance of {selectedItem.Name}");
+        Example? example;
 
-        Test<object?>[] tests = example.Tests;
-
-        Console.Clear();
-        for (int i = 0; i < tests.Length; i++)
+        try
         {
-            Console.WriteLine($"-- Test {i+1}  --");
-            
-            if (tests[i].Run()) Console.WriteLine("-- Success --");
-            else Console.WriteLine("-- Failure --");
-
-            Console.WriteLine();
+            example = (Example?)Activator.CreateInstance(selectedItem.Type);
+            if (example == null) throw new ApplicationException($"Instance of {selectedItem.Name} is null");
         }
-        Console.WriteLine("Press enter to return to menu");
-        Console.ReadLine();
+        catch
+        {
+            throw new ApplicationException($"Could not create instance of {selectedItem.Name}");
+        }
+
+        Test<object?>.RunTests(example.Tests);
     }
 }

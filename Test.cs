@@ -43,5 +43,21 @@ namespace DSA_Examples
 
             return (expStr, resStr, equal);
         }
+
+        public static void RunTests(Test<object?>[] tests)
+        {
+            Console.Clear();
+            for (int i = 0; i < tests.Length; i++)
+            {
+                Console.WriteLine($"-- Test {i + 1}  --");
+
+                if (tests[i].Run()) Console.WriteLine("-- Success --");
+                else Console.WriteLine("-- Failure --");
+
+                Console.WriteLine();
+            }
+            Console.WriteLine("Press enter to return to menu");
+            Console.ReadLine();
+        }
     }
 }

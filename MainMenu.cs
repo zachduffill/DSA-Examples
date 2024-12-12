@@ -11,7 +11,7 @@ namespace DSA_Examples
             get => _menuOffset;
             set
             {
-                if (value >= 0 && value < MenuItems.Length - 10)
+                if (value >= 0 && value < MenuItems.Length - 9)
                 {
                     _menuOffset = value;
                 }
@@ -45,7 +45,7 @@ namespace DSA_Examples
         static private MenuItem[] LoadExamples()
         {
             var types = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(t => t.Namespace == "DSA_Examples.Examples")
+                .Where(t => t.Namespace == "DSA_Examples.Examples" && t.Name != "<>c")
                 .ToList();
 
             MenuItem[] menuItems = new MenuItem[types.Count()];
@@ -54,7 +54,6 @@ namespace DSA_Examples
             {
                 menuItems[i] = new MenuItem(types[i].Name, types[i]);
             }
-
             return menuItems;
         }
 
@@ -68,7 +67,7 @@ namespace DSA_Examples
             {
                 Console.WriteLine($"[{i-MenuOffset}] {MenuItems[i]}");
             }
-            Console.WriteLine(MenuOffset+11 != MenuItems.Length ? "      ↓\n" : "\n");
+            Console.WriteLine(MenuOffset+11 <= MenuItems.Length ? "      ↓\n" : "\n");
             Console.WriteLine("[x] Exit");
         }
 
