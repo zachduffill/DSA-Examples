@@ -2,6 +2,11 @@
 {
     abstract class Example
     {
-        public abstract Test<object?>[] tests { get; init; }
+        public Test<object?>[] Tests { get; init; }
+
+        public Example()
+        {
+            Tests = new Test<object?>[5];
+        }
     }
 }

@@ -14,18 +14,16 @@ while (true)
         Example? example = (Example?)Activator.CreateInstance(selectedItem.Type);
         if (example == null) throw new ApplicationException($"Could not create instance of {selectedItem.Name}");
 
-        Test<object?>[] tests = example.tests;
+        Test<object?>[] tests = example.Tests;
 
+        Console.Clear();
         for (int i = 0; i < tests.Length; i++)
         {
-            if (tests[i].Run())
-            {
-                Console.WriteLine($"Test {i + 1}: Success");
-            }
-            else
-            {
-                Console.WriteLine($"Test {i + 1}: Failure");
-            }
+            Console.WriteLine($"-- Test {i}  --");
+            
+            if (tests[i].Run()) Console.WriteLine("-- Success --");
+            else Console.WriteLine("-- Failure --");
+
             Console.WriteLine();
         }
         Console.WriteLine("Press enter to return to menu");

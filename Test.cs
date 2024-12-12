@@ -14,6 +14,9 @@
             T result = Method();
             if (result == null) return false;
 
+            Console.WriteLine($"Expected   {Expected}");
+            Console.WriteLine($"Actual     {result}");
+
             if (result.Equals(Expected)) return true;
             return false;
         }
