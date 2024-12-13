@@ -89,7 +89,9 @@ namespace DSA_Examples
                         return (true, null);
                 }
             }
-            return (false,MenuItems[int.Parse(input.KeyChar.ToString())+MenuOffset]);
+            int digitPressed = int.Parse(input.KeyChar.ToString());
+            if (digitPressed + MenuOffset >= MenuItems.Length) return (false, null);
+            return (false,MenuItems[digitPressed+MenuOffset]);
         }
     }
 }
