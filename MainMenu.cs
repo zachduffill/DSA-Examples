@@ -45,7 +45,7 @@ namespace DSA_Examples
         static private MenuItem[] LoadExamples()
         {
             var types = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(t => t.Namespace == "DSA_Examples.Examples" && t.Name != "<>c")
+                .Where(t => t.Namespace == "DSA_Examples.Examples" && t.Name != "<>c" && !t.IsNested)
                 .ToList();
 
             MenuItem[] menuItems = new MenuItem[types.Count()];
