@@ -4,10 +4,12 @@ namespace DSA_Examples
 {
     internal class Test<T>
     {
+        string Name { get; init; }
         Func<T> Method { get; init; }
         object Expected { get; init; }
-        public Test(Func<T> method, object expected)
+        public Test(string name, Func<T> method, object expected)
         {
+            Name = name;
             Method = method;
             Expected = expected;
         }
@@ -17,8 +19,8 @@ namespace DSA_Examples
             if (result == null) return false;
 
             (string expStr, string resStr, bool equal) = HandleAndCompare(Expected, result);
-            Console.WriteLine($"Expected   {expStr}");
-            Console.WriteLine($"Actual     {resStr}");
+            Console.WriteLine($" Expected   {expStr}");
+            Console.WriteLine($" Actual     {resStr}");
 
             if (equal) return true;
             else return false;
@@ -49,16 +51,17 @@ namespace DSA_Examples
             Console.Clear();
             for (int i = 0; i < tests.Length; i++)
             {
-                Console.WriteLine($"-- Test {i + 1}  --");
+                Console.WriteLine($"-- Test {i + 1}: {tests[i].Name} --");
+                string dashes = new string('-', tests[i].Name.Length + 1);
 
                 try
                 {
-                    if (tests[i].Run()) Console.WriteLine("-- Success --");
-                    else Console.WriteLine("-- Failure --");
+                    if (tests[i].Run()) Console.WriteLine($"-- Success --{dashes}");
+                    else Console.WriteLine($"-- Failure --{dashes}");
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine($"{e.StackTrace}\n{e.Message}\n-- Failure --");
+                    Console.WriteLine($"{e.StackTrace}\n{e.Message}\n-- Failure --{dashes}");
                 }
 
                 Console.WriteLine();

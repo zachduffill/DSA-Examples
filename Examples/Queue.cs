@@ -113,10 +113,10 @@
 
             Tests = new Test<object?>[]
             {
-                new Test<object?>(() => Peek(),1),
-                new Test<object?>(() => Dequeue(),1),
-                new Test<object?>(() => Enqueue(0),0),
-                new Test<object?>(() => ToString(),"[2] -> [3] -> [4] -> [5] -> [6] -> [0]"),
+                new Test<object?>("Peek",() => Peek(),1),
+                new Test<object?>("Dequeue",() => Dequeue(),1),
+                new Test<object?>("Enqueue",() => Enqueue(0),0),
+                new Test<object?>("String conversion",() => ToString(),"[2] -> [3] -> [4] -> [5] -> [6] -> [0]"),
             };
         }
     }

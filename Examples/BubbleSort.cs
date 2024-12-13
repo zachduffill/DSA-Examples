@@ -23,9 +23,9 @@
         public BubbleSort()
         {
             Tests = new Test<object?>[] {
-                new Test<object?>(() => Sort([0, 8, 3, 5, 2]), new int[5] { 0, 2, 3, 5, 8 }),
-                new Test<object?>(() => Sort([5, 2, 11, 0, -1]), new int[5] { -1, 0, 2, 5, 11 }),
-                new Test<object?>(() => Sort([500, 2, 1, 1, 4]), new int[5] { 1, 1, 2, 4, 500 }),
+                new Test<object?>("Normal",() => Sort([0, 8, 3, 5, 2]), new int[5] { 0, 2, 3, 5, 8 }),
+                new Test<object?>("Negatives",() => Sort([5, 2, 11, 0, -1]), new int[5] { -1, 0, 2, 5, 11 }),
+                new Test<object?>("Reversed",() => Sort([500, 4, 2, 1, 1]), new int[5] { 1, 1, 2, 4, 500 }),
             };
         }
     }
