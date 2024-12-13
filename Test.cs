@@ -51,8 +51,15 @@ namespace DSA_Examples
             {
                 Console.WriteLine($"-- Test {i + 1}  --");
 
-                if (tests[i].Run()) Console.WriteLine("-- Success --");
-                else Console.WriteLine("-- Failure --");
+                try
+                {
+                    if (tests[i].Run()) Console.WriteLine("-- Success --");
+                    else Console.WriteLine("-- Failure --");
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine($"{e.StackTrace}\n{e.Message}\n-- Failure --");
+                }
 
                 Console.WriteLine();
             }
