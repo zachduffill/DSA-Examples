@@ -3,6 +3,7 @@ using DSA_Examples.Utility;
 using static DSA_Examples.MainMenu;
 
 MainMenu menu = new MainMenu();
+
 while (true)
 {
     menu.Display();
@@ -10,7 +11,7 @@ while (true)
     
     if (shouldExit) return 0;
     
-    if (selectedItem != null)
+    if (selectedItem != null) // If an example is selected, try to create an instance of it, then run it's tests
     {
         Example? example;
 
