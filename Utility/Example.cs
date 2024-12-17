@@ -1,4 +1,6 @@
-﻿namespace DSA_Examples
+﻿using DSA_Examples.Utility;
+
+namespace DSA_Examples
 {
     abstract class Example
     {

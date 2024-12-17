@@ -1,4 +1,5 @@
 ﻿using DSA_Examples;
+using DSA_Examples.Utility;
 using static DSA_Examples.MainMenu;
 
 MainMenu menu = new MainMenu();

@@ -25,7 +25,7 @@ namespace DSA_Examples
             if (equal) return true;
             else return false;
         }
-        private static (string,string,bool) HandleAndCompare(object exp, object res) // Handles object types (due to differences in value comparison and string conversion)
+        private static (string, string, bool) HandleAndCompare(object exp, object res) // Handles object types (due to differences in value comparison and string conversion)
         {
             string expStr, resStr;
             bool equal = false;
@@ -56,12 +56,16 @@ namespace DSA_Examples
 
                 try
                 {
-                    if (tests[i].Run()) Console.WriteLine($"-- Success --{dashes}");
-                    else Console.WriteLine($"-- Failure --{dashes}");
+                    bool testSucceeded = tests[i].Run();
+                    Console.ForegroundColor = testSucceeded ? ConsoleColor.Green : ConsoleColor.Red;
+                    Console.WriteLine(testSucceeded ? $"-- Success --{dashes}" : $"-- Failure --{dashes}");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"{e.StackTrace}\n{e.Message}\n-- Failure --{dashes}");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 Console.WriteLine();
