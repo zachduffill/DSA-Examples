@@ -49,6 +49,7 @@ namespace DSA_Examples
         public static void RunTests(Test<object?>[] tests)
         {
             Console.Clear();
+            Console.WriteLine("\x1b[3J"); // Removes contents of whole console (without this, only content within the viewport will be cleared)
             for (int i = 0; i < tests.Length; i++)
             {
                 Console.WriteLine($"-- Test {i + 1}: {tests[i].Name} --");

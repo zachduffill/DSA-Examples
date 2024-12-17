@@ -23,6 +23,7 @@ namespace DSA_Examples.Examples
                 queue.Tail = node;
             }
 
+            queue.Length++;
             return queue.Tail.Value;
         }
 
@@ -42,24 +43,8 @@ namespace DSA_Examples.Examples
                 queue.Head = node.Next;
             }
 
+            queue.Length--;
             return node.Value;
-        }
-
-        public override string ToString()
-        {
-            if (queue.Head == null || queue.Tail == null) return "";
-
-            string str = "";
-
-            LinkedList.Node? curr = queue.Head;
-            while (curr != queue.Tail && curr != null)
-            {
-                str += $"[{curr.Value}] -> ";
-                curr = curr.Next;
-            }
-            str += $"[{queue.Tail.Value}]";
-
-            return str;
         }
 
         public Queue()
@@ -71,7 +56,7 @@ namespace DSA_Examples.Examples
                 new Test<object?>("Peek",() => Peek(),1),
                 new Test<object?>("Dequeue",() => Dequeue(),1),
                 new Test<object?>("Enqueue",() => Enqueue(0),0),
-                new Test<object?>("String conversion",() => ToString(),"[2] -> [3] -> [4] -> [5] -> [6] -> [0]"),
+                new Test<object?>("String conversion",() => queue.ToString(),"[2] -> [3] -> [4] -> [5] -> [6] -> [0]"),
             };
         }
     }
