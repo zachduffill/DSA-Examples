@@ -4,9 +4,9 @@ namespace DSA_Examples.Examples
 {
     internal class RingBuffer : Example
     {
-        object?[] arr;
-        int rPt = 0; // read pointer
-        int wPt = 0; // write pointer
+        private object?[] arr;
+        private int rPt = 0; // read pointer
+        private int wPt = 0; // write pointer
 
         public int Add(object? obj)
         {
