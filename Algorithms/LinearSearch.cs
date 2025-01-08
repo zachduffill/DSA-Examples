@@ -4,11 +4,11 @@ namespace DSA_Examples.Examples
 {
     internal class LinearSearch : Example
     {
-        static private int? Search(Object[] arr, Object q)
+        static private int? Search(Object[] array, Object target) // Searches through a given arrayay for a target linearly, returning it's index if found       O(n)
         {
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (arr[i].Equals(q)) return i;
+                if (array[i].Equals(target)) return i;
             }
             return -1;
         }
