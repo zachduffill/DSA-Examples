@@ -7,7 +7,7 @@ namespace DSA_Examples.Examples
         private LinkedList stack;
         public int Length => stack.Length;
 
-        public object Push(object obj)
+        public object Push(object obj) // Pushes the object to the top of the stack as a Node, returns it's value       O(1)
         {
             LinkedList.Node node = new LinkedList.Node(obj);
             stack.Length++;
@@ -25,7 +25,7 @@ namespace DSA_Examples.Examples
             return stack.Head.Value;
         }
 
-        public object Pop()
+        public object Pop() // Removes the topmost node from the stack, and returns it's value      O(1)
         {
             if (stack.Head == null) return -1;
             
