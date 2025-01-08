@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace DSA_Examples.Utility
 {
-    public struct LinkedList
+    public class LinkedList
     {
         public Node? Head { get; set; }
         public Node? Tail { get; set; }
