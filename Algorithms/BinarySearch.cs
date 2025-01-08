@@ -4,20 +4,20 @@ namespace DSA_Examples.Examples
 {
     internal class BinarySearch : Example
     {
-        static private int? Search(int[] arr, int q)
+        static private int? Search(int[] array, int target) // Searches a given array for a target value, and returns it's index        O(logn)
         {
             int lo = 0;
-            int hi = arr.Length;
-            int mp = arr.Length / 2;
+            int hi = array.Length;
+            int midpoint = array.Length / 2;
 
-            while (hi-lo > 0)
+            while (hi-lo > 0) // halves search range until the midpoint is the target, or the target has not been found
             {
-                if (arr[mp] == q) return mp;
+                if (array[midpoint] == target) return midpoint;
 
-                if (q > arr[mp]) lo = mp + 1;
-                else hi = mp;
+                if (target > array[midpoint]) lo = midpoint + 1;
+                else hi = midpoint;
 
-                mp = lo + (hi - lo) / 2;
+                midpoint = lo + (hi - lo) / 2;
             }
             return -1;
         }
