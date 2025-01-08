@@ -1,6 +1,6 @@
 ﻿using DSA_Examples.Utility;
 
-namespace DSA_Examples
+namespace DSA_Examples.Utility
 {
     abstract class Example
     {

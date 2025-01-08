@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DSA_Examples
+namespace DSA_Examples.Utility
 {
     internal class Test<T>
     {
