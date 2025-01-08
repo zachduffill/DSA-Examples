@@ -4,7 +4,7 @@ using static DSA_Examples.MainMenu;
 
 MainMenu menu = new MainMenu();
 
-while (true)
+while (true) // Menu display + input handling loop
 {
     menu.Display();
     (bool shouldExit, MenuItem? selectedItem) = menu.HandleInput(); 
