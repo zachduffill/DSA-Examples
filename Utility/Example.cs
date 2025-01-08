@@ -4,11 +4,6 @@ namespace DSA_Examples
 {
     abstract class Example
     {
-        public Test<object?>[] Tests { get; init; }
-
-        public Example()
-        {
-            Tests = new Test<object?>[5];
-        }
+        public Test<object?>[]? Tests { get; init; } // an array of Tests to be ran on the Example
     }
 }
