@@ -25,6 +25,6 @@ while (true) // Menu display + input handling loop
             throw new ApplicationException($"Could not create instance of {selectedItem.Name}");
         }
 
-        Test<object?>.RunTests(example.Tests);
+        if (example.Tests != null) Test<object?>.RunTests(example.Tests);
     }
 }
