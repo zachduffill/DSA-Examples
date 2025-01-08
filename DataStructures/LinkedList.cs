@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace DSA_Examples.Utility
+﻿namespace DSA_Examples.Utility
 {
     public class LinkedList
     {
@@ -13,13 +6,13 @@ namespace DSA_Examples.Utility
         public Node? Tail { get; set; }
         public int Length { get; set; }
 
-        public class Node
+        public class Node // class representing a singular node in the list
         {
             public object Value { get; set; }
             public Node? Next { get; set; }
             public Node? Prev { get; set; }
 
-            public Node(object val, Node? next = null, Node? prev = null)
+            public Node(object val, Node? next = null, Node? prev = null) // instantiates a node with a given value
             {
                 Value = val;
                 Next = next;
@@ -32,7 +25,7 @@ namespace DSA_Examples.Utility
             }
         }
 
-        public LinkedList(object[] initialValues)
+        public LinkedList(object[] initialValues) // Fill the list with values defined in the object[] argument
         {
             if (initialValues.Length == 0) return;
 
@@ -57,11 +50,13 @@ namespace DSA_Examples.Utility
             Tail = last;
         }
 
-        public LinkedList()
+        public LinkedList()// Instantiate an empty list
         {
             Head = null; Tail = null; Length = 0;
         }
 
+
+        // Returns a string representation of the list in the format "[value1] -> [value2] -> etc.."
         public override string ToString()
         {
             if (Head == null || Tail == null) return "";
