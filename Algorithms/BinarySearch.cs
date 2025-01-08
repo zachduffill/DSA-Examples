@@ -4,7 +4,7 @@ namespace DSA_Examples.Examples
 {
     internal class BinarySearch : Example
     {
-        static private int? Search(int[] array, int target) // Searches a given array for a target value, and returns it's index        O(logn)
+        static private int? Search(int[] array, int target) // Searches a given int array for a target value, and returns it's index        O(logn)
         {
             int lo = 0;
             int hi = array.Length;
