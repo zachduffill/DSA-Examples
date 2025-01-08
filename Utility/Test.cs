@@ -4,16 +4,16 @@ namespace DSA_Examples
 {
     internal class Test<T>
     {
-        string Name { get; init; }
-        Func<T> Method { get; init; }
-        object? Expected { get; init; }
+        string Name { get; init; } 
+        Func<T> Method { get; init; } // The method to be tested
+        object? Expected { get; init; } // Expected output value from the method
         public Test(string name, Func<T> method, object? expected)
         {
             Name = name;
             Method = method;
             Expected = expected;
         }
-        public bool Run()
+        public bool Run() // Call the method and return True if it returns the Expected value
         {
             object? result = Method();
             if (result == null) return false;
@@ -46,7 +46,7 @@ namespace DSA_Examples
             return (expStr, resStr, equal);
         }
 
-        public static void RunTests(Test<object?>[] tests)
+        public static void RunTests(Test<object?>[] tests) // Runs each Test in an array of Tests, and prettifies the results for the console.
         {
             Console.Clear();
             Console.WriteLine("\x1b[3J"); // Removes contents of whole console (without this, only content within the viewport will be cleared)
