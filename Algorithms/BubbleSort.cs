@@ -4,7 +4,7 @@ namespace DSA_Examples.Examples
 {
     internal class BubbleSort : Example
     {
-        static private int[] Sort(int[] arr)
+        static private int[] Sort(int[] arr) // Sorts a given int array, and returns it     O(n^2)
         {
             for (int j = 1; j < arr.Length; j++)
             {
@@ -12,14 +12,19 @@ namespace DSA_Examples.Examples
                 {
                     if (arr[i] > arr[i + 1])
                     {
-                        int tmp = arr[i + 1];
-                        arr[i + 1] = arr[i];
-                        arr[i] = tmp;
+                        Swap(ref arr, i, i + 1);
                     }
                 }
             }
 
             return arr;
+        }
+
+        static private void Swap(ref int[] arr, int idx1, int idx2) // Given two indices, swaps their values in an array
+        {
+            int tmp = arr[idx1];
+            arr[idx1] = arr[idx2];
+            arr[idx2] = tmp;
         }
 
         public BubbleSort()
