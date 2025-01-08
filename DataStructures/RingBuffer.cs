@@ -4,42 +4,42 @@ namespace DSA_Examples.Examples
 {
     internal class RingBuffer : Example
     {
-        private object?[] arr;
-        private int rPt = 0; // read pointer
-        private int wPt = 0; // write pointer
+        private object?[] array;
+        private int readPointer = 0; 
+        private int writePointer = 0;
 
-        public int Add(object? obj)
+        public int Add(object? obj) // Adds an object at the writePointer, and increments it        O(1)
         {
-            if (arr == null) return -1;
+            if (array == null) return -1;
 
-            int idx = wPt % arr.Length;
-            if (idx == rPt && wPt > rPt) return -1;
+            int idx = writePointer % array.Length;
+            if (idx == readPointer && writePointer > readPointer) return -1;
 
-            arr[idx] = obj;
-            wPt++;
+            array[idx] = obj;
+            writePointer++;
 
             return idx;
         }
 
-        public object? Read()
+        public object? Read() // Returns the object at the readPointer, and increments it        O(1)
         {
-            int newrPt = (rPt + 1 == arr.Length) ? 0 : rPt + 1;
-            if (newrPt == wPt % arr.Length) return -1;
+            int newreadPointer = (readPointer + 1 == array.Length) ? 0 : readPointer + 1;
+            if (newreadPointer == writePointer % array.Length) return -1;
 
-            object? obj = arr[rPt];
-            rPt = newrPt;
+            object? obj = array[readPointer];
+            readPointer = newreadPointer;
 
             return obj;
         }
 
         public override string ToString()
         {
-            return string.Join(",",arr);
+            return string.Join(",",array);
         }
 
         public RingBuffer()
         {
-            arr = new object[3];
+            array = new object[3];
 
             Tests = new Test<object?>[]
             {
