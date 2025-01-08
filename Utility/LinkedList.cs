@@ -32,24 +32,24 @@ namespace DSA_Examples.Utility
             }
         }
 
-        public LinkedList(object[] arr)
+        public LinkedList(object[] initialValues)
         {
-            if (arr.Length == 0) return;
+            if (initialValues.Length == 0) return;
 
-            Head = new Node(arr[0]);
+            Head = new Node(initialValues[0]);
             Length = 1;
 
-            if (arr.Length == 1) return;
+            if (initialValues.Length == 1) return;
 
             Node last = Head;
-            for (int i = 1; i < arr.Length; i++)
+            for (int i = 1; i < initialValues.Length; i++)
             {
-                Node curr = new Node(arr[i]);
+                Node current = new Node(initialValues[i]);
 
-                last.Next = curr;
-                curr.Prev = last;
+                last.Next = current;
+                current.Prev = last;
 
-                last = curr;
+                last = current;
 
                 Length++;
             }
@@ -68,11 +68,11 @@ namespace DSA_Examples.Utility
 
             string str = "";
 
-            LinkedList.Node? curr = Head;
-            while (curr != Tail && curr != null)
+            LinkedList.Node? current = Head;
+            while (current != Tail && current != null)
             {
-                str += $"[{curr.Value}] -> ";
-                curr = curr.Next;
+                str += $"[{current.Value}] -> ";
+                current = current.Next;
             }
             str += $"[{Tail.Value}]";
 
