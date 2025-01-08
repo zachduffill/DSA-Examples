@@ -6,13 +6,13 @@ namespace DSA_Examples.Examples
     {
         private LinkedList queue;
 
-        public object Peek()
+        public object Peek() // Returns the item at the front of the queue
         {
             if (queue.Head == null) return -1;
             return queue.Head.Value;
         }
 
-        public object Enqueue(object obj)
+        public object Enqueue(object obj) // Adds a given object to the end of the queue as a node, returns it's value
         {
             LinkedList.Node node = new LinkedList.Node(obj);
             if (queue.Head == null || queue.Tail == null) queue.Head = queue.Tail = node;
@@ -27,7 +27,7 @@ namespace DSA_Examples.Examples
             return queue.Tail.Value;
         }
 
-        public object? Dequeue()
+        public object? Dequeue() // Removes the node at the front of the queue, returns it's value
         {
             if (queue.Head == null || queue.Tail == null) return null;
 
