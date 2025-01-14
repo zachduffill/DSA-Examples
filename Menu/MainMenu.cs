@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 
-namespace DSA_Examples
+namespace DSA_Examples.Menu
 {
     internal class MainMenu
     {
         private MenuItem[] MenuItems { get; init; }
         private int _menuOffset;
-        private int MenuOffset 
+        private int MenuOffset
         {
             get => _menuOffset;
             set
@@ -15,23 +15,6 @@ namespace DSA_Examples
                 {
                     _menuOffset = value;
                 }
-            }
-        } 
-
-        public class MenuItem
-        {
-            public string Name { get; init; }
-            public Type Type { get; init; }
-
-            public MenuItem(string name, Type type)
-            {
-                Name = name;
-                Type = type;
-            }
-
-            public override string ToString()
-            {
-                return Name;
             }
         }
 
@@ -63,18 +46,18 @@ namespace DSA_Examples
             Console.WriteLine("DSA-Examples");
             Console.WriteLine("------------");
             Console.WriteLine(MenuOffset > 0 ? "      ↑" : "");
-            for (int i = MenuOffset; i < Math.Min(MenuItems.Length,10) + MenuOffset; i++)
+            for (int i = MenuOffset; i < Math.Min(MenuItems.Length, 10) + MenuOffset; i++)
             {
-                Console.WriteLine($"[{i-MenuOffset}] {MenuItems[i]}");
+                Console.WriteLine($"[{i - MenuOffset}] {MenuItems[i]}");
             }
-            Console.WriteLine(MenuOffset+11 <= MenuItems.Length ? "      ↓\n" : "\n");
+            Console.WriteLine(MenuOffset + 11 <= MenuItems.Length ? "      ↓\n" : "\n");
             Console.WriteLine("[x] Exit");
         }
 
-        public (bool,MenuItem?) HandleInput()
+        public (bool, MenuItem?) HandleInput()
         {
             ConsoleKeyInfo input = new ConsoleKeyInfo();
-            while (!Char.IsDigit(input.KeyChar))
+            while (!char.IsDigit(input.KeyChar))
             {
                 input = Console.ReadKey(true);
                 switch (input.Key)
@@ -91,7 +74,7 @@ namespace DSA_Examples
             }
             int digitPressed = int.Parse(input.KeyChar.ToString());
             if (digitPressed + MenuOffset >= MenuItems.Length) return (false, null);
-            return (false,MenuItems[digitPressed+MenuOffset]);
+            return (false, MenuItems[digitPressed + MenuOffset]);
         }
     }
 }
