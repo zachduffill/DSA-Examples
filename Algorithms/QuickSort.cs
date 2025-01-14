@@ -4,13 +4,13 @@ namespace DSA_Examples.Examples
 {
     internal class QuickSort : Example
     {
-        static private int[] Sort(int[] arr)
+        static private int[] Sort(int[] arr) // Sorts a given int[] and returns it      O(nlogn)
         {
-            qs(ref arr, 0, arr.Length - 1);
+            qs(ref arr, 0, arr.Length - 1); // Recursion entry point 
             return arr;
         }
 
-        static private void qs(ref int[] arr, int lo, int hi)
+        static private void qs(ref int[] arr, int lo, int hi) // Recursive sort
         {
             if (lo >= hi) return;
 
@@ -20,7 +20,7 @@ namespace DSA_Examples.Examples
             qs(ref arr, p + 1, hi);
         }
 
-        static private int Partition(ref int[] arr, int lo, int hi)
+        static private int Partition(ref int[] arr, int lo, int hi) // Weakly sorts th
         {
             int p = lo + (hi - lo) / 2;
 
@@ -40,7 +40,7 @@ namespace DSA_Examples.Examples
             return p;
         }
 
-        static private void Swap(ref int[] arr, int idx1, int idx2)
+        static private void Swap(ref int[] arr, int idx1, int idx2) // Swaps two array items by index
         {
             int tmp = arr[idx1];
             arr[idx1] = arr[idx2];
