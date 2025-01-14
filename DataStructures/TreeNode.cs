@@ -1,5 +1,5 @@
 ﻿
-namespace DSA_Examples.DataStructures
+namespace DSA_Examples.Utility
 {
     public class TreeNode
     {
