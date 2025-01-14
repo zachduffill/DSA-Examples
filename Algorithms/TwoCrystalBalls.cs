@@ -4,19 +4,19 @@ namespace DSA_Examples.Examples
 {
     internal class TwoCrystalBalls : Example
     {
-        static private int Search(bool[] floors)
+        static private int Search(bool[] floors) // Given a bool[], returns the index of the first true, or -1 if there are no trues        O(sqrt(n))
         {
             int jumpSize = (int)Math.Floor(Math.Sqrt(floors.Length));
 
             int i = jumpSize;  
-            for (i = 0; i < floors.Length; i += jumpSize)
+            for (i = 0; i < floors.Length; i += jumpSize) // Check every sqrt(n) index until true
             {
                 if (floors[i] == true) break;
             }
 
-            for (int j = Math.Max(i - jumpSize,0); j <= i && j < floors.Length; j++)
+            for (int j = Math.Max(i - jumpSize,0); j <= i && j < floors.Length; j++) // Search linearly from last false check
             {
-                if (floors[j] == true) return j;
+                if (floors[j] == true) return j; // Return first true when found
             }
 
             return -1;
